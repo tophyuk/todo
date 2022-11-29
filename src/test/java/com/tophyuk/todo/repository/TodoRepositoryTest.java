@@ -16,7 +16,7 @@ public class TodoRepositoryTest {
     private TodoRepository todoRepository;
 
     @Test
-    void save() {
+    void create() {
         Todo todo = new Todo();
         todo.setContents("밥먹기");
         todo.setComplete(Boolean.TRUE);

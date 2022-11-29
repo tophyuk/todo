@@ -2,10 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>To Do List</title>
+    <title>tophyuk의 todo-list</title>
 </head>
 <body>
-<h1>My TodoList</h1>
+<h1>tophyuk의 todo-list</h1>
+<form th:action  method="post">
+    <input name="content" placeholder="해야할 일을 적어보세요">
+    <button>등록</button>
+</form>
+<br>
 <table>
     <thead>
     <tr>

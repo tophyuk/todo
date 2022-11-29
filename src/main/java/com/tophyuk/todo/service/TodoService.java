@@ -5,6 +5,7 @@ import com.tophyuk.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -15,5 +16,13 @@ public class TodoService {
 
     public List<Todo> getList() {
         return todoRepository.findAll();
+    }
+
+    public void create(String content){
+        Todo todo = new Todo();
+        todo.setContents(content);
+        todo.setComplete(false);
+        todo.setModifiedDate(LocalDate.now());
+        todoRepository.save(todo);
     }
 }
