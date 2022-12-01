@@ -36,7 +36,7 @@
 <script>
         function deleteTodo(id) {
             console.log(id)
-            const url = "/todo/delete/"+id
+            const url = "/todo/"+id
             $.ajax({
                 type:'delete',
                 url:url,
