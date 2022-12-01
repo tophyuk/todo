@@ -4,6 +4,7 @@ import com.tophyuk.todo.domain.Todo;
 import com.tophyuk.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,5 +25,11 @@ public class TodoService {
         todo.setComplete(false);
         todo.setModifiedDate(LocalDate.now());
         todoRepository.save(todo);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Todo findId = todoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 아이템이 없습니다. id=" + id));
+        todoRepository.delete(findId);
     }
 }
