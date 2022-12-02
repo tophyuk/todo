@@ -26,7 +26,7 @@ public class Todo {
     public Todo() {
 
     }
-    public Todo(Long id, String contents) {
+    public Todo(Long id, String contents, Boolean complete) {
         this.id = id;
         this.contents = contents;
         this.complete = Boolean.FALSE;
