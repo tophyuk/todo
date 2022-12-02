@@ -19,17 +19,33 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public void create(String content){
+    public Todo getTodo(Long id) {
+        Todo todo = todoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 할 일이 없습니다. id=" + id));
+        return todo;
+    }
+
+    public Todo create(String content){
         Todo todo = new Todo();
         todo.setContents(content);
         todo.setComplete(false);
         todo.setModifiedDate(LocalDate.now());
         todoRepository.save(todo);
+        return todo;
     }
 
     @Transactional
     public void delete(Long id) {
-        Todo findId = todoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 아이템이 없습니다. id=" + id));
-        todoRepository.delete(findId);
+        Todo findTodo = todoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 할 일이 없습니다. id=" + id));
+        todoRepository.delete(findTodo);
+    }
+
+    @Transactional
+    public void update(Long id, Todo updateParam) {
+        Todo findTodo = todoRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 할 일이 없습니다. id=" + id));
+
+        findTodo.setContents(updateParam.getContents());
+        findTodo.setComplete(updateParam.getComplete());
+
+        todoRepository.save(findTodo);
     }
 }

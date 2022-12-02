@@ -17,7 +17,6 @@
         <th>번호</th>
         <th>할 일</th>
         <th>완료 여부</th>
-        <th>삭제 버튼</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +24,7 @@
         <td th:text="${todo.id}"></td>
         <td th:text="${todo.contents}"></td>
         <td th:text="${todo.complete}"></td>
+        <td><button type="button" th:onclick="|location.href='@{|/todo/update/${todo.id}|}'|">수정</button></td>
         <td><button type="button" th:onclick="|deleteTodo(${todo.id})|">삭제</button></td>
     </tr>
     </tbody>

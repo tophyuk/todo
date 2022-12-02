@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tophyuk의 todo-list</title>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>수정 화면입니다.</h2>
+    </div>
+
+    <form th:action th:object="${todo}" th:method="post">
+        <div>
+            <label for="id">번호</label>
+            <input type="text" id="id"  th:field="*{id}" readonly disabled>
+        </div>
+        <div>
+            <label for="contents">내용</label>
+            <input type="text" id="contents" th:field="*{contents}">
+        </div>
+        <div>
+            <label>완료 여부</label>
+            <select th:field="*{complete}">
+                <option th:value="true">완료</option>
+                <option th:value="false">미완료</option>
+            </select>
+        </div>
+
+        <hr>
+
+        <div>
+            <span><button type="submit">저장</button></span>
+            <span><button th:onclick="|location.href='@{/todo}'|" type="button">취소</button></span>
+        </div>
+    </form>
+</div>
+</body>
+</html>
