@@ -17,6 +17,7 @@ public class TodoController {
 
     private final TodoService todoService;
 
+    //주석 추가
     @RequestMapping("/")
     public String root(){
         return "redirect:/todo";
